@@ -1,32 +1,36 @@
-﻿import { TestData } from '../test-data.js';
+﻿import { BasePage } from './base-page.js';
+import { TestData } from '../test-data.js';
 
-export class EditorPage {
+export class EditorPage extends BasePage {
   constructor(page) {
-    this.page = page;
-    // пока так т.к не находит другие локаторы
+    super(page);
     this.articleTitleInput = page.locator('input').first();
     this.articleAboutInput = page.locator('input').nth(1);
     this.articleBodyInput = page.locator('textarea').first();
     this.tagsInput = page.locator('input').last();
-    this.publishButton = page.locator('button').getByText('Publish Article');
+    this.publishButton = page.getByRole('button', { name: 'Publish Article' });
+    this.updateButton = page.getByRole('button', { name: 'Update Article' }); // Добавляем для редактирования
   }
 
   async createNewArticle() {
     const articleData = TestData.generateArticle();
     
-    // загрузка страницы
-    await this.page.waitForLoadState('networkidle');
-    
     await this.articleTitleInput.fill(articleData.title);
     await this.articleAboutInput.fill(articleData.description);
     await this.articleBodyInput.fill(articleData.body);
     
-    // Теги
     await this.tagsInput.fill(articleData.tags[0]);
     await this.tagsInput.press('Enter');
     
     await this.publishButton.click();
-    await this.page.waitForURL(/\/article\//, { timeout: 15000 });
+    await this.page.waitForURL(/\/article\//);
+    
     return articleData;
+  }
+
+  async updateArticleBody(newBody) {
+    await this.articleBodyInput.fill(newBody);
+    await this.updateButton.click(); // Используем Update Article для редактирования
+    await this.page.waitForURL(/\/article\//);
   }
 }

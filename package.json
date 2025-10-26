@@ -1,27 +1,13 @@
-{
-  "name": "qa_guru_auto",
+﻿{
+  "name": "qa-guru-playwright",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "testUI": "npx playwright test --ui",
-    "report": "npx playwright show-report",
-    "allureFile": "npx allure awesome ./allure-results --single-file"
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sorokinaayana/lessonrep.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sorokinaayana/lessonrep/issues"
-  },
-  "homepage": "https://github.com/sorokinaayana/lessonrep#readme",
-  "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "@types/node": "^24.5.2"
+    "@playwright/test": "^1.40.0"
   }
 }

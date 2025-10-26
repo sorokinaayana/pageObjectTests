@@ -1,6 +1,4 @@
-﻿import { faker } from '@faker-js/faker';
-
-export class TestData {
+﻿export class TestData {
   static generateUser() {
     const timestamp = Date.now();
     return {
@@ -11,8 +9,9 @@ export class TestData {
   }
 
   static generateArticle() {
+    const timestamp = Date.now();
     return {
-      title: 'Статья ' + Date.now(),
+      title: 'Статья ' + timestamp,
       description: 'Статья для домашнего задания',
       body: 'Содержание статьи для домашнего задания',
       tags: ['testQAGURU', 'autotest']
