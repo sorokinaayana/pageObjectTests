@@ -1,10 +1,7 @@
-
-# Playwright
-node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
-/lessonrep/tests-examples/
-/lessonrep/.github/workflows/
+﻿node_modules/
+test-results/
+playwright-report/
+playwright/.cache/
+allure-results/
+allure-report/
+.allure/
