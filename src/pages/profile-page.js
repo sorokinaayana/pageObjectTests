@@ -5,14 +5,15 @@ export class ProfilePage extends BasePage {
     super(page);
     this.bioInput = page.getByRole('textbox', { name: 'Short bio about you' });
     this.updateButton = page.getByRole('button', { name: 'Update Settings' });
+    this.editProfileLink = page.getByRole('link', { name: 'Edit Profile Settings' });
   }
 
   async navigateToProfile(username) {
-    await this.page.goto('https://realworld.qa.guru/#/profile/' + username);
+    await this.page.goto(`https://realworld.qa.guru/#/profile/${username}`);
   }
 
   async navigateToEditProfile() {
-    await this.page.getByRole('link', { name: 'Edit Profile Settings' }).click();
+    await this.editProfileLink.click();
   }
 
   async updateBio(newBio) {
