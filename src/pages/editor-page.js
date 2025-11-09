@@ -9,7 +9,7 @@ export class EditorPage extends BasePage {
     this.articleBodyInput = page.locator('textarea').first();
     this.tagsInput = page.locator('input').last();
     this.publishButton = page.getByRole('button', { name: 'Publish Article' });
-    this.updateButton = page.getByRole('button', { name: 'Update Article' }); // Добавляем для редактирования
+    this.updateButton = page.getByRole('button', { name: 'Update Article' });
   }
 
   async createNewArticle() {
@@ -30,7 +30,7 @@ export class EditorPage extends BasePage {
 
   async updateArticleBody(newBody) {
     await this.articleBodyInput.fill(newBody);
-    await this.updateButton.click(); // Используем Update Article для редактирования
+    await this.updateButton.click();
     await this.page.waitForURL(/\/article\//);
   }
 }
